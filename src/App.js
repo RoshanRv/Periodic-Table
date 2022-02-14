@@ -1,5 +1,6 @@
 import Table from './components/Table'
 import Header from './components/Header'
+import Loading from './components/Loading'
 import {useEffect,useState} from 'react'
 import fetchAllElements from './Api';
 
@@ -19,12 +20,12 @@ function App() {
 
   return (
     <div className="App ">
-      <div className='max-h-screen'>
+      {!isLoading?<div className='max-h-screen'>
         <Header />
         <main className='max-h-screen'>
           {!isLoading&& <Table allElements={allElements} />}
         </main>
-      </div>
+      </div>:<Loading />}
     </div>
   );
 }
