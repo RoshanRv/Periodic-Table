@@ -1,20 +1,47 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClose } from '@fortawesome/free-solid-svg-icons'
 
-const Element = ({data}) => {
+const Element = ({data,tab,difficulty,rand,getRand,foundOnes,setFoundOnes,setScore}) => {
 
     const [showInfo,setShowInfo]=useState(false)
+    const [isCorrect,setIsCorrect]=useState(0)
 
     const displayInfo = (e)=>{
-        setShowInfo(true)
-        console.log('red')
+        if(tab)
+        {setShowInfo(true)
+        console.log('red')}
+
+        if(!tab && rand){
+            if(data.name==rand){
+                // setTotalCorrect(1)
+                setFoundOnes(foundOnes.concat(data.name))
+                setScore(e=>e+100)
+                setIsCorrect(1)
+                getRand()
+            }else {
+                setScore(e=>e-50)
+                setIsCorrect(2)
+            }
+        }
     }
 
+    useEffect(()=>{
+        var found = false
+        for(var i=0;i<foundOnes.length;i++){
+            if(foundOnes[i]==data.name) found=true
+        }
+        if(!found) setIsCorrect(0)
+    },[foundOnes,setFoundOnes])
+
+    
+
     const hideInfo = (e)=>{
+        if(tab){
         setShowInfo(false)
         console.log('red')
+        }
     }
 
     if(data.atomicNumber == '103')data.groupBlock='actinoid'
@@ -66,26 +93,26 @@ const Element = ({data}) => {
 
   return (
       <div>
-        <div className={`lg:py-1 md:w-10 lg:w-[4.5rem] w-4 text-center  hover:scale-125 transition-transform `} onClick={()=>displayInfo()} style={{background:`linear-gradient(110deg,${color},${color2})`}}>
-            <p className='md:text-sm text-[6px]'>{data.atomicNumber}</p>
-            <h1 className='lg:text-xl md:text-lg text-[8.5px] font-semi-bold'>{data.symbol}</h1>
-            <h1 className='md:text-[.65vw] lg:block hidden p-1'>{data.name}</h1>
+        <div className={`lg:py-1 md:w-10 lg:w-[4.5rem] w-4 text-center ${isCorrect==1?'bg-green-500':isCorrect==2&&'bg-red-300'} hover:scale-125 transition-transform ${!tab&&'box-border border-[1px] bg-white border-black'}`} onClick={()=>displayInfo()} style={{background:tab&&`linear-gradient(110deg,${color},${color2})`}}>
+            <p className={`md:text-sm text-[6px] transition-all ${(!tab&&difficulty==3)&&'opacity-0'}`}>{data.atomicNumber}</p>
+            <h1 className={`lg:text-xl md:text-lg text-[8.5px] font-semi-bold ${(!tab&&difficulty>=2)&&'opacity-0'}`}>{data.symbol}</h1>
+            <h1 className={`md:text-[.65vw] lg:block hidden p-1 ${(!tab&&difficulty)&&'opacity-0'} `}>{data.name}</h1>
             {/* <h1 className='md:text-[.65vw] p-1'>{data.groupBlock}</h1> */}
             {/* <h1>{color}</h1> */}
         </div>
 
     {/*     INFO       */}
-        <div className={`w-full h-full bg-white/60 top-0 left-0 ${showInfo?'scale-100':'scale-0 hidden'} transition-transform absolute flex items-center justify-center `}>
-            <div className="relative bg-white p-4 md:px-6 lg:px-10 w-3/4 md:w-1/2 border-2 border-black">
+        {tab&&(<div className={`w-full h-full bg-white/60 top-0 left-0 ${showInfo?'scale-100':'scale-0 hidden'} transition-transform absolute flex  justify-center py-2`}>
+            <div className="relative bg-white p-4 md:px-6 h-max lg:px-10 w-11/12  md:w-1/2 border-2 border-black">
                 {/* <h1 className='p-2'>PROPERTIES</h1> */}
-                <FontAwesomeIcon icon={faClose} className='absolute lg:top-6 top-1 lg:right-3 right-1 text-md md:text-2xl' onClick={()=>hideInfo()}/>
-                <div className="p-2 text-center" style={{background:`linear-gradient(110deg,${color},${color2})`}}>
+                <FontAwesomeIcon icon={faClose} className='absolute lg:top-6 top-1 lg:right-3 right-2 text-md md:text-2xl' onClick={()=>hideInfo()}/>
+                <div className="p-2  text-center" style={{background:`linear-gradient(110deg,${color},${color2})`}}>
                     <p className=''>{data.atomicNumber}</p>
                     <h1 className='text-4xl p-1 font-semi-bold'>{data.symbol}</h1>
                     <h1 className='text-2xl p-1'>{data.name}</h1>
                     <h1 className='text-xl p-1 capitalize'>{data.groupBlock}</h1>
                 </div >
-                <div className='text-center flex flex-col lg:w-3/4  mx-auto pt-4'>
+                <div className='text-center flex flex-col lg:w-3/4  mx-auto pt-4 '>
                     <div className="flex justify-between text-xs md:text-md lg:text-lg hover:bg-black/10 hover:scale-110 hover:shadow-lg p-1 transition-transform ">
                         <p>Atomic Mass</p>
                         <p>{data.atomicMass}</p>
@@ -161,7 +188,7 @@ const Element = ({data}) => {
                 </div>
 
             </div>
-        </div>
+        </div>)}
 
         
 
