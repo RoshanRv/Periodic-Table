@@ -5,6 +5,7 @@ const Table = ({allElements,tab,difficulty,setDifficulty,symbol,setScore,score})
 const [rand,setRand]=useState()
 const [start,setStart]=useState(0)
 const [end,setEnd]=useState(false)
+const [replay,setReplay]=useState(false)
 const [foundOnes,setFoundOnes]=useState([])
 const [highscore,setHighscore]=useState([])
 
@@ -14,7 +15,6 @@ const [highscore,setHighscore]=useState([])
     },[])
 
     const stop = ()=>{
-        setScore(0)
         setRand('')
         symbol.splice(0,symbol.length)
         setFoundOnes(e=>e.splice(0,e.length))
@@ -37,9 +37,11 @@ const [highscore,setHighscore]=useState([])
             }
         }
         setEnd(true)
+        setReplay(true)
     }
 
     const getRandom=()=>{
+        end&& setScore(0)
         var sym = Math.floor(Math.random()*(symbol.length-1))
         setRand(symbol[sym])
         symbol.splice(sym,1)
@@ -60,14 +62,15 @@ const [highscore,setHighscore]=useState([])
 
             {/* Game Difficulty  */}
             {!tab&&(<div className='fle'>
-                <label>Difficulty</label>
-                <select value={difficulty} onChange={(e)=>setDifficulty(e.target.value)}>
+            {start==0&&<label className='text-[.7vw] md:text-lg mx-2'>Difficulty</label>}
+            {start==0&&<select value={difficulty} onChange={(e)=>setDifficulty(e.target.value)} className='bg-transparent outline-0 border-b-2 border-black pb-2 text-[.7vw] md:text-lg mx-2'>
                     <option value={1}>Easy</option>
                     <option value={2}>Medium</option>
                     <option value={3}>Hard</option>
-                </select>
-                {start==0&&<button className="px-2 py-1" onClick={()=>getRandom()}>Play!!</button>}
-                {start==1&&<button className="px-2 py-1" onClick={()=>stop()}>END GAME</button>}
+                </select>}
+                {(start==0&&!replay)&&<button className="px-2 py-1 bg-gradient-to-tr from-[#d279ff] to-[#96e7ff] rounded-md border-2" onClick={()=>getRandom()}>Play!!</button>}
+                {(start==0&&replay)&&<button className="px-2 py-1 bg-gradient-to-tr from-[#d279ff] to-[#96e7ff] rounded-md border-2" onClick={()=>getRandom()}>Play Again!!</button>}
+                {start==1&&<button className="px-2 py-1 bg-gradient-to-tr from-[#d279ff] to-[#96e7ff] rounded-md border-2" onClick={()=>stop()}>Quit</button>}
 
             </div>)}
 
@@ -131,12 +134,10 @@ const [highscore,setHighscore]=useState([])
         </div>)}
 
 
-                {!tab&&(<div>
+                {!tab&&(<div className='text-center'>
                     <h1>{rand}</h1>
-                    <h1>{score}</h1>
-                    {end&&<h1>Highscore: {highscore}</h1>}
-
-
+                    {(replay||start==1)&&<h1>Score:<span className={` font-bold ${score>0?'text-green-500':'text-red-600'}`}>{score}</span></h1>}
+                    {(end&&highscore)&&<h1>Highscore:<span className={` font-bold ${highscore>0?'text-green-500':'text-red-600'}`}>{highscore}</span></h1>}
                 </div>)}
         
 

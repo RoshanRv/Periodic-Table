@@ -13,7 +13,7 @@ const Element = ({data,tab,difficulty,rand,getRand,foundOnes,setFoundOnes,setSco
         {setShowInfo(true)
         console.log('red')}
 
-        if(!tab && rand){
+        if(!tab && rand && isCorrect==0){
             if(data.name==rand){
                 // setTotalCorrect(1)
                 setFoundOnes(foundOnes.concat(data.name))
@@ -45,58 +45,93 @@ const Element = ({data,tab,difficulty,rand,getRand,foundOnes,setFoundOnes,setSco
     }
 
     if(data.atomicNumber == '103')data.groupBlock='actinoid'
+var color3 = '#FF0000'
+
+// if(data.groupBlock=='nonmetal'){
+// 3   var color = '#FAFA37'5//     var color2 = 'rgba(255, 255, 0, 1)'
+//0.7}
+// else if(data.groupBlock=='alkali metal'){
+// 3   var color = '#FF6EFF'5//     var color2 = 'rgba(225, 0, 0, 1)'
+//0.7}
+// if(data.groupBlock=='alkaline earth metal'){
+// 3   var color = '#0066FF'5//     var color2 = 'rgba(64, 64, 225, 1)'
+//0.7}
+// if(data.groupBlock=='transition metal'){
+// 3   var color = '#CCFF00'5//     var color2 = 'rgba(0, 128, 225, 1)'
+//0.7}
+// if(data.groupBlock=='metal'){
+// 3   var color = '#32FF6A'5//     var color2 = 'rgba(0, 255, 0, 1)'
+//0.7}
+// if(data.groupBlock=='metalloid'){
+// 3   var color = '#14FFEC'5//     var color2 = 'rgba(140, 190, 0, 1)'
+//0.7}
+// if(data.groupBlock=='halogen'){
+// 3   var color = '#8F47B3'5//     var color2 = 'rgba(186, 92, 248, 1)'
+//0.7}
+// if(data.groupBlock=='noble gas'){
+// 3   var color = '#DB91EF'5//     var color2 = 'rgba(255, 152, 0, 1)'
+//0.7}
+// if(data.groupBlock=='post-transition metal'){
+// 3   var color = '#F8D568'5//     var color2 = 'rgba(248, 92, 170, 1)'
+//0.7}
+// if(data.groupBlock=='lanthanoid'){
+// 3   var color = '#FD0E35'5//     var color2 = 'rgba(0, 255, 255, 1)'
+//0.7}
+// if(data.groupBlock=='actinoid'){
+// 3   var color = '#FF9933'5//     var color2 = 'rgba(64, 255, 192, 1)'
+//0.7}
 
     if(data.groupBlock=='nonmetal'){
-        var color = 'rgba(255, 255, 0, 0.2)'
-        var color2 = 'rgba(255, 255, 0, 0.5)'
+        var color = '#ffffcc'
+        var color2 = ' #ffff1a '
     }
     else if(data.groupBlock=='alkali metal'){
-        var color = 'rgba(225, 0, 0, 0.2)'
-        var color2 = 'rgba(225, 0, 0, 0.5)'
+        var color = '#ff9999'
+        var color2 = '#ff1a1a'
     }
     if(data.groupBlock=='alkaline earth metal'){
-        var color = 'rgba(64, 64, 225, 0.2)'
-        var color2 = 'rgba(64, 64, 225, 0.5)'
+        var color = '#80b3ff'
+        var color2 = '#0066ff'
     }
     if(data.groupBlock=='transition metal'){
-        var color = 'rgba(0, 128, 225, 0.2)'
-        var color2 = 'rgba(0, 128, 225, 0.5)'
+        var color = '#99e6ff'
+        var color2 = '#00bfff'
     }
     if(data.groupBlock=='metal'){
-        var color = 'rgba(0, 255, 0, 0.2)'
-        var color2 = 'rgba(0, 255, 0, 0.5)'
+        var color = '#b3ffb3'
+        var color2 = '#00ff00'
     }
     if(data.groupBlock=='metalloid'){
-        var color = 'rgba(140, 190, 0, 0.2)'
-        var color2 = 'rgba(140, 190, 0, 0.5)'
+        var color = '#e6ffb3'
+        var color2 = '#b3ff1a'
     }
     if(data.groupBlock=='halogen'){
-        var color = 'rgba(186, 92, 248, 0.2)'
-        var color2 = 'rgba(186, 92, 248, 0.5)'
+        var color = '#f2ccff'
+        var color2 = '#d24dff'
     }
     if(data.groupBlock=='noble gas'){
-        var color = 'rgba(255, 152, 0, 0.2)'
-        var color2 = 'rgba(255, 152, 0, 0.5)'
+        var color = '#ffcc99'
+        var color2 = '#ff9933'
     }
     if(data.groupBlock=='post-transition metal'){
-        var color = 'rgba(248, 92, 170, 0.2)'
-        var color2 = 'rgba(248, 92, 170, 0.5)'
+        var color = '#ffb3ff'
+        var color2 = '#ff80ff'
     }
     if(data.groupBlock=='lanthanoid'){
-        var color = 'rgba(0, 255, 255, 0.2)'
-        var color2 = 'rgba(0, 255, 255, 0.5)'
+        var color = '#b3ffff'
+        var color2 = '#00e6e6'
     }
     if(data.groupBlock=='actinoid'){
-        var color = 'rgba(64, 255, 192, 0.2)'
-        var color2 = 'rgba(64, 255, 192, 0.5)'
+        var color = '#ccfff5'
+        var color2 = '#4dffdb'
     }
-
+//style={{background:tab&&`linear-gradient(110deg,${color},${color2})`}}
   return (
       <div>
-        <div className={`lg:py-1 md:w-10 lg:w-[4.5rem] w-4 text-center ${isCorrect==1?'bg-green-500':isCorrect==2&&'bg-red-300'} hover:scale-125 transition-transform ${!tab&&'box-border border-[1px] bg-white border-black'}`} onClick={()=>displayInfo()} style={{background:tab&&`linear-gradient(110deg,${color},${color2})`}}>
-            <p className={`md:text-sm text-[6px] transition-all ${(!tab&&difficulty==3)&&'opacity-0'}`}>{data.atomicNumber}</p>
-            <h1 className={`lg:text-xl md:text-lg text-[8.5px] font-semi-bold ${(!tab&&difficulty>=2)&&'opacity-0'}`}>{data.symbol}</h1>
-            <h1 className={`md:text-[.65vw] lg:block hidden p-1 ${(!tab&&difficulty)&&'opacity-0'} `}>{data.name}</h1>
+        <div aria-disabled className={`lg:py-1 md:w-10 lg:w-[4.5rem] w-4 text-center ${isCorrect==0?`bg-slate-200`:isCorrect==1?'bg-emerald-400':isCorrect==2&&'bg-red-400'} hover:scale-125 transition-transform ${!tab&&'box-border border-[1px]  border-black'}`} onClick={()=>displayInfo()}style={{background:tab&&`linear-gradient(110deg,${color},${color2})`}}>
+            <p className={`md:text-sm text-[6px] transition-all ${(!tab&&difficulty==3)&&'opacity-0'}`} >{data.atomicNumber}</p>
+            <h1 className={`lg:text-xl md:text-lg text-[8.5px]  font-semi-bold ${(!tab&&difficulty>=2)&&'opacity-0'}`} >{data.symbol}</h1>
+            <h1 className={`md:text-[.65vw] xl:text-[.50vw]  lg:block hidden p-1 ${(!tab)&&'opacity-0'} `} >{data.name}</h1>
             {/* <h1 className='md:text-[.65vw] p-1'>{data.groupBlock}</h1> */}
             {/* <h1>{color}</h1> */}
         </div>
