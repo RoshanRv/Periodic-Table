@@ -32,12 +32,12 @@ function App() {
 
   return (
     <Router >
-      <div className="App min-h-screen" style={{backgroundColor: '#96e7ff',
+      <div className="App min-h-screen " style={{backgroundColor: '#96e7ff',
 background: 'linear-gradient(45deg, #96e7ff 0%, #d279ff 100%)'
 }}>
-        {!isLoading?<div className='max-h-screen'>
+        {!isLoading?<div className=' '>
           <Header setTab={setTab} tab={tab}/>
-            <main className='max-h-screen w-screen overflow-hidden '>
+            <main className='overflow-hidden font-disp '>
             <Routes >
               <Route path='/' element={!isLoading&& <Table allElements={allElements} tab={tab} difficulty={difficulty} setDifficulty={setDifficulty}/>} />
               <Route path='/game' element={!isLoading&& <Table allElements={allElements} tab={tab} difficulty={difficulty} setDifficulty={setDifficulty}

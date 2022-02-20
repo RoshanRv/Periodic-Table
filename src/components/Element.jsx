@@ -128,16 +128,16 @@ var color3 = '#FF0000'
 //style={{background:tab&&`linear-gradient(110deg,${color},${color2})`}}
   return (
       <div>
-        <div aria-disabled className={`lg:py-1 md:w-10 lg:w-[4.5rem] w-4 text-center ${isCorrect==0?`bg-slate-200`:isCorrect==1?'bg-emerald-400':isCorrect==2&&'bg-red-400'} hover:scale-125 transition-transform ${!tab&&'box-border border-[1px]  border-black'}`} onClick={()=>displayInfo()}style={{background:tab&&`linear-gradient(110deg,${color},${color2})`}}>
+        <div className={`lg:py-1 md:w-10 lg:w-[4.5rem] w-4 text-center ${isCorrect==0?`bg-slate-200`:isCorrect==1?'bg-emerald-400':isCorrect==2&&'bg-red-400'} ${isCorrect==0&&'hover:scale-125 cursor-pointer'} transition-transform ${!tab&&'box-border border-[1px]  border-black'}`} onClick={()=>displayInfo()}style={{background:tab&&`linear-gradient(110deg,${color},${color2})`}}>
             <p className={`md:text-sm text-[6px] transition-all ${(!tab&&difficulty==3)&&'opacity-0'}`} >{data.atomicNumber}</p>
             <h1 className={`lg:text-xl md:text-lg text-[8.5px]  font-semi-bold ${(!tab&&difficulty>=2)&&'opacity-0'}`} >{data.symbol}</h1>
-            <h1 className={`md:text-[.65vw] xl:text-[.50vw]  lg:block hidden p-1 ${(!tab)&&'opacity-0'} `} >{data.name}</h1>
+            <h1 className={`md:text-[.8vw] xl:text-[.53vw]  lg:block hidden p-1 ${(!tab)&&'opacity-0'} `} >{data.name}</h1>
             {/* <h1 className='md:text-[.65vw] p-1'>{data.groupBlock}</h1> */}
             {/* <h1>{color}</h1> */}
         </div>
 
     {/*     INFO       */}
-        {tab&&(<div className={`w-full h-full bg-white/60 top-0 left-0 ${showInfo?'scale-100':'scale-0 hidden'} transition-transform absolute flex  justify-center py-2`}>
+        {tab&&(<div className={`w-full h-full bg-white/60 top-0 left-0 ${showInfo?'scale-100':'scale-0 hidden'} transition-transform fixed z-50 flex  justify-center py-2`}>
             <div className="relative bg-white p-4 md:px-6 h-max lg:px-10 w-11/12  md:w-1/2 border-2 border-black">
                 {/* <h1 className='p-2'>PROPERTIES</h1> */}
                 <FontAwesomeIcon icon={faClose} className='absolute lg:top-6 top-1 lg:right-3 right-2 text-md md:text-2xl' onClick={()=>hideInfo()}/>
