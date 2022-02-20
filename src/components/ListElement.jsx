@@ -55,11 +55,11 @@ const ListElement = ({data}) => {
 
   return (
     <div className={`bg-white md:p-4 p-2 md:w-3/4 mx-auto transition-all ${moreDetails?'max-h-[54rem]':'md:max-h-44 max-h-[7.65rem]'} relative rounded-xl my-1 shadow-md cursor-pointer`}>
-        {data.symbol&&<div className='grid grid-cols-2 rounded-xl shadow-lg font-bold items-baseline place-content-start  px-3 py-3' onClick={()=>setMoreDetails(!moreDetails)}  style={{background:`linear-gradient(110deg,${color},${color2})`}}>
+        {data.symbol&&<div className='grid grid-cols-2 rounded-xl shadow-lg font-bold items-baseline place-content-start  relative px-3 py-3' onClick={()=>setMoreDetails(!moreDetails)}  style={{background:`linear-gradient(110deg,${color},${color2})`}}>
         <h1 className='md:text-7xl text-3xl place-self-start	' >{data.symbol}</h1>
         <h1 className='md:text-4xl text-xl place-self-end' >{data.atomicNumber}</h1>
         <h1 className='md:text-2xl text-lg py-2 place-self-start'>{data.name}</h1>
-        <h1 className='md:text-2xl text-md  py-1 capitalize place-self-end'>{data.groupBlock}</h1>
+        <h1 className='md:text-2xl text-xs  py-2 capitalize place-self-end'>{data.groupBlock}</h1>
         </div>}
         {/*  ERROR */}
         {data.errorCode&&<h1 className='text-md md:text-2xl'>Searched Term is Not Found :(</h1>}

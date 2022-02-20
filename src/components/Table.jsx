@@ -61,8 +61,8 @@ const [highscore,setHighscore]=useState([])
 
 
   return (
-    <section className=''>
-        <div className='lg:w-[81rem] md:w-[45rem] w-[18rem] mx-auto mt-3 pb-4'>
+    <section >
+        <div className={`lg:w-[81rem] md:w-[45rem] w-[18rem] mx-auto mt-3 pb-4 ${!tab&&'min-h-[88vh]'}`}>
             <div className="flex justify-between">
                 <div>{<Element tab={tab} setScore={setScore} setScore={setScore} setFoundOnes={setFoundOnes} foundOnes={foundOnes} getRand={getRandom} rand={rand} difficulty={difficulty} key={allElements[0]?.atomicNumber} data={allElements[0]} />}</div>
 

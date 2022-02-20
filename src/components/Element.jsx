@@ -47,39 +47,6 @@ const Element = ({data,tab,difficulty,rand,getRand,foundOnes,setFoundOnes,setSco
     if(data.atomicNumber == '103')data.groupBlock='actinoid'
 var color3 = '#FF0000'
 
-// if(data.groupBlock=='nonmetal'){
-// 3   var color = '#FAFA37'5//     var color2 = 'rgba(255, 255, 0, 1)'
-//0.7}
-// else if(data.groupBlock=='alkali metal'){
-// 3   var color = '#FF6EFF'5//     var color2 = 'rgba(225, 0, 0, 1)'
-//0.7}
-// if(data.groupBlock=='alkaline earth metal'){
-// 3   var color = '#0066FF'5//     var color2 = 'rgba(64, 64, 225, 1)'
-//0.7}
-// if(data.groupBlock=='transition metal'){
-// 3   var color = '#CCFF00'5//     var color2 = 'rgba(0, 128, 225, 1)'
-//0.7}
-// if(data.groupBlock=='metal'){
-// 3   var color = '#32FF6A'5//     var color2 = 'rgba(0, 255, 0, 1)'
-//0.7}
-// if(data.groupBlock=='metalloid'){
-// 3   var color = '#14FFEC'5//     var color2 = 'rgba(140, 190, 0, 1)'
-//0.7}
-// if(data.groupBlock=='halogen'){
-// 3   var color = '#8F47B3'5//     var color2 = 'rgba(186, 92, 248, 1)'
-//0.7}
-// if(data.groupBlock=='noble gas'){
-// 3   var color = '#DB91EF'5//     var color2 = 'rgba(255, 152, 0, 1)'
-//0.7}
-// if(data.groupBlock=='post-transition metal'){
-// 3   var color = '#F8D568'5//     var color2 = 'rgba(248, 92, 170, 1)'
-//0.7}
-// if(data.groupBlock=='lanthanoid'){
-// 3   var color = '#FD0E35'5//     var color2 = 'rgba(0, 255, 255, 1)'
-//0.7}
-// if(data.groupBlock=='actinoid'){
-// 3   var color = '#FF9933'5//     var color2 = 'rgba(64, 255, 192, 1)'
-//0.7}
 
     if(data.groupBlock=='nonmetal'){
         var color = '#ffffcc'
@@ -128,7 +95,7 @@ var color3 = '#FF0000'
 //style={{background:tab&&`linear-gradient(110deg,${color},${color2})`}}
   return (
       <div>
-        <div className={`lg:py-1 md:w-10 lg:w-[4.5rem] w-4 text-center ${isCorrect==0?`bg-slate-200`:isCorrect==1?'bg-emerald-400':isCorrect==2&&'bg-red-400'} ${isCorrect==0&&'hover:scale-125 cursor-pointer'} transition-transform ${!tab&&'box-border border-[1px]  border-black'}`} onClick={()=>displayInfo()}style={{background:tab&&`linear-gradient(110deg,${color},${color2})`}}>
+        <div className={`lg:py-1 md:w-10 lg:w-[4.5rem] w-4 text-center ${isCorrect==0?`bg-slate-200`:isCorrect==1?'bg-green-400':isCorrect==2&&'bg-red-400'} ${isCorrect==0&&'hover:scale-125 cursor-pointer'} transition-transform ${!tab&&'box-border border-[1px]  border-black'}`} onClick={()=>displayInfo()}style={{background:tab&&`linear-gradient(110deg,${color},${color2})`}}>
             <p className={`md:text-sm text-[6px] transition-all ${(!tab&&difficulty==3)&&'opacity-0'}`} >{data.atomicNumber}</p>
             <h1 className={`lg:text-xl md:text-lg text-[8.5px]  font-semi-bold ${(!tab&&difficulty>=2)&&'opacity-0'}`} >{data.symbol}</h1>
             <h1 className={`md:text-[.8vw] xl:text-[.53vw]  lg:block hidden p-1 ${(!tab)&&'opacity-0'} `} >{data.name}</h1>
