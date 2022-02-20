@@ -4,6 +4,7 @@ import Loading from './components/Loading'
 import {useEffect,useState} from 'react'
 import fetchAllElements from './Api';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import Footer from './components/Footer'
 
 
 function App() {
@@ -44,6 +45,7 @@ background: 'linear-gradient(45deg, #96e7ff 0%, #d279ff 100%)'
               symbol={symbol} score={score} setScore={setScore}/>} />
 ]            </Routes>
             </main>
+            <Footer />
         </div>:<Loading />}
       </div>
     </Router>

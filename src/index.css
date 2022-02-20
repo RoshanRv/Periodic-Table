@@ -16,3 +16,24 @@
 .bla{
     text-shadow: 1px 1px 2px black;
 }
+
+.beat{
+    animation-name: heart;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+}
+
+@keyframes heart{
+    0%{
+        transform: scale(1);
+    }
+
+    90%{
+        transform: scale(0.7);
+    }
+
+    /* 100%{
+        transform: scale(1);
+    } */
+
+}
