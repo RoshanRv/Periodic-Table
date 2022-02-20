@@ -2,7 +2,7 @@
 
 A Site To Learn About Chemical Elements
 
-![periodic_table_preview](https://user-images.githubusercontent.com/75238302/149731588-167977ec-1b1e-4b38-a591-96be8db59295.png)
+![periodic_table_preview](https://user-images.githubusercontent.com/75238302/154854177-274fe97e-eab3-463f-9070-7065ac633918.png)
 
 ## General Info
 
