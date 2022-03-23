@@ -29,6 +29,7 @@ const Element = ({data,tab,difficulty,rand,getRand,foundOnes,setFoundOnes,setSco
 
     useEffect(()=>{
         var found = false
+        console.log(foundOnes)
         for(var i=0;i<foundOnes.length;i++){
             if(foundOnes[i]==data.name) found=true
         }
@@ -92,7 +93,7 @@ var color3 = '#FF0000'
         var color = '#ccfff5'
         var color2 = '#4dffdb'
     }
-//style={{background:tab&&`linear-gradient(110deg,${color},${color2})`}}
+//style={{background:tab&&`linear-gradient(110deg,${colo},${color2})`}}
   return (
       <div>
         <div className={`lg:py-1 md:w-10 lg:w-[4.5rem] w-4 text-center ${isCorrect==0?`bg-slate-200`:isCorrect==1?'bg-green-400':isCorrect==2&&'bg-red-400'} ${isCorrect==0&&'hover:scale-125 cursor-pointer'} transition-transform ${!tab&&'box-border border-[1px]  border-black'}`} onClick={()=>displayInfo()}style={{background:tab&&`linear-gradient(110deg,${color},${color2})`}}>

@@ -20,7 +20,8 @@ const [highscore,setHighscore]=useState([])
     const stop = ()=>{
         setRand('')
         symbol.splice(0,symbol.length)
-        setFoundOnes(e=>e.splice(0,e.length))
+        setFoundOnes([])
+        console.log(foundOnes)
         allElements.forEach((data)=>{
             symbol.push(data.name)
         })
